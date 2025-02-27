@@ -1,72 +1,105 @@
+html {
+    box-sizing: border-box;
+    height: 100%;
+}
 
-header{ 
-    height: 80px;
-    background-color: #333;
-    color: #f9f9f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+p {
+    margin: 0;
+    padding: 0;
 }
-main{
-    margin: auto;
-}
-.tasks-header
-{
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 10px;
-}
-p{
-    font-size: 20px;
-    font-weight: bold;
-}
-.description{
 
-}
-.right-container{
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+    margin: 0;
 
-    white-space: nowrap;
-}
-.left-container{
-    flex:1;
-}
-.task{
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(233, 227, 227);
-    padding: 0px 20px;
-    border-radius: 15px;
-    margin: 10px;
-}
-.task-description{
-    display: flex;
-    align-items: center;
-    padding: 10px;
-}
-input{
-    border-radius: 8px;
-    height: 30px;
-}
-button{
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    color: #f9f9f9;
-}
-.action-buttons{
-    margin: 10px 10px;
+    header {
+        height: 50px;
+        background-color: #333;
+        color: #f9f9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            border-radius: 8px;
+            height: 30px;
+        }
+    }
+
+    .tasks-header {
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        gap: 10px;
+        background-color:burlywood;
+
+        .task-description {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+    }
+
+    .tasks {
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        flex: 1;
+
+        .task {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 5px 10px;
+            background-color: #ddd;
+
+            &:nth-child(even) { /* Alternating colors */
+                background-color: #ccc;
+            }
     
-}
-.action-buttons.danger{
-    background-color: red;
-}
-.action-buttons.primary{
-    background-color: green;
-}
+            .left-container {
+                flex-grow: 1; /* Allows it to take available space */
+                min-width: 0; /* Required for flexbox to respect overflow settings */
 
-footer{
-    background-color: #333;
-    color: white;
-    padding: 10px;
+                .description {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+
+            .right-container {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .action-buttons {
+                border: none;
+                border-radius: 5px;
+                padding: 5px;
+                cursor: pointer;
+
+                &.danger {
+                    background-color: red;
+                }
+
+                &.primary {
+                    background-color: green;
+                }
+            }
+
+        }
+    }
+
+    footer {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+    }
 }
